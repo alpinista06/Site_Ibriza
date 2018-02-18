@@ -1,27 +1,34 @@
 <?php
-echo "Abrindo a porta serial...";
-echo "Caso nao abra em 5 segundos, ocorreu um erro.";
-$port=fopen("/dev/ttyACM0", "w");
-if($_POST['estado']=="Amarelo"){
-    echo "Enviando comando do led amarelo.";
-    fwrite($port,"0")
-    echo "Amarelo ligado com sucesso.";
+echo "Abrindo a porta serial...<br>";
+echo "Caso nao abra em 5 segundos, ocorreu um erro.<br>";
+try {
+   //$port=fopen("/dev/ttyACM0", "w");
+   if($_POST['estado']=="Amarelo"){
+       echo "Enviando comando do led amarelo.<br>";
+       //fwrite($port,"a")
+       echo "Amarelo ligado com sucesso.<br>";
+   }
+   if($_POST['estado']=="Azul"){
+       echo "Enviando comando do led azul.<br>";
+       //fwrite($port,"b")
+       echo "Azul ligado com sucesso.<br>";
+   }
+   if($_POST['estado']=="Laranja"){
+       echo "Enviando comando do led laranja.<br>";
+       //fwrite($port,"c")
+       echo "Laranja ligado com sucesso.<br>";
+    }
+    if($_POST['estado']=="Verde"){
+        echo "Enviando comando do led verde.<br>";
+        //fwrite($port,"d")
+        echo "Verde ligado com sucesso.<br>";
+    }
+    echo "Fechando a porta serial...<br>";
+    //fclose($port)
+} catch (Exception $e) {
+    echo 'Excecaoo capturada: ',  $e->getMessage(), "\n";
 }
-if($_POST['estado']=="Azul"){
-    echo "Enviando comando do led azul.";
-    fwrite($port,"1")
-    echo "Azul ligado com sucesso.";
-}
-if($_POST['estado']=="Laranja"){
-    echo "Enviando comando do led laranja.";
-    fwrite($port,"2")
-    echo "Laranja ligado com sucesso.";
-}
-if($_POST['estado']=="Verde"){
-    echo "Enviando comando do led verde.";
-    fwrite($port,"3")
-    echo "Verde ligado com sucesso.";
-}
-echo "Fechando a porta serial...";
-fclose($port)
+
+echo "<br>";
+phpinfo(); //Mostra varias informacoes do php
 ?>
