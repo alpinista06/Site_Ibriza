@@ -1,2 +1,4 @@
 # gedit 
 *~
+#php
+*.php.save
