@@ -5,6 +5,7 @@
     <title>Controle de Leds com Arduino</title>
 </head>
 <body>
+
     <div align="center">
         <table border="0" width="15%" cellpadding="0">
             <!--POST DO BOTAO LIGAR AMARELO-->
@@ -30,10 +31,15 @@
             </form>
             <!--POST DO BOTAO LIGAR VERDE-->
             <form method="POST" action="arduino.php">
-                <p>
+                <p><img class="" src="plot.png" alt="">
                     <input type="hidden" value="Verde" name="estado">
                     <input type="submit" value="    Ligar Led Verde   " name="verde">
                 </p>
+            </form>
+            <form method="POST" action="arduino.php">
+                <container>
+                  <img class="" src="plot.png" alt="">
+                </container>
             </form>
         </table>
     </div>

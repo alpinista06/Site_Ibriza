@@ -2,33 +2,45 @@
 echo "Abrindo a porta serial...<br>";
 echo "Caso nao abra em 5 segundos, ocorreu um erro.<br>";
 try {
-   //$port=fopen("/dev/ttyACM0", "w");
-   if($_POST['estado']=="Amarelo"){
-       echo "Enviando comando do led amarelo.<br>";
-       //fwrite($port,"a")
-       echo "Amarelo ligado com sucesso.<br>";
-   }
-   if($_POST['estado']=="Azul"){
-       echo "Enviando comando do led azul.<br>";
-       //fwrite($port,"b")
-       echo "Azul ligado com sucesso.<br>";
-   }
-   if($_POST['estado']=="Laranja"){
-       echo "Enviando comando do led laranja.<br>";
-       //fwrite($port,"c")
-       echo "Laranja ligado com sucesso.<br>";
-    }
-    if($_POST['estado']=="Verde"){
-        echo "Enviando comando do led verde.<br>";
-        //fwrite($port,"d")
-        echo "Verde ligado com sucesso.<br>";
-    }
-    echo "Fechando a porta serial...<br>";
-    //fclose($port)
+   //$port=fopen("/dev/ttyACM0", "r");
+   //$leitura = fread($port)
+// Standard inclusions
+include("pChart/pData.class");
+include("pChart/pChart.class");
+
+// Dataset definition
+$DataSet = new pData;
+$DataSet->AddPoint(array(1,4,3,2,3,3,2,1,0,7,4,3,2,3,3,5,1,0,7));
+$DataSet->AddSerie();
+$DataSet->SetSerieName("Sample data","Serie1");
+
+// Initialise the graph
+$Test = new pChart(700,230);
+$Test->setFontProperties("Fonts/tahoma.ttf",10);
+$Test->setGraphArea(40,30,680,200);
+$Test->drawGraphArea(252,252,252);
+$Test->drawScale($DataSet->GetData(),$DataSet->GetDataDescription(),SCALE_NORMAL,150,150,150,TRUE,0,2);
+$Test->drawGrid(4,TRUE,230,230,230,255);
+
+// Draw the line graph
+$Test->drawLineGraph($DataSet->GetData(),$DataSet->GetDataDescription());
+$Test->drawPlotGraph($DataSet->GetData(),$DataSet->GetDataDescription(),3,2,255,255,255);
+
+// Finish the graph
+$Test->setFontProperties("Fonts/tahoma.ttf",8);
+$Test->drawLegend(45,35,$DataSet->GetDataDescription(),255,255,255);
+$Test->setFontProperties("Fonts/tahoma.ttf",10);
+$Test->drawTitle(60,22,"My pretty graph",50,50,50,585);
+$Test->Render("Naked.png");
 } catch (Exception $e) {
     echo 'Excecaoo capturada: ',  $e->getMessage(), "\n";
 }
 
 echo "<br>";
 phpinfo(); //Mostra varias informacoes do php
+
+
+
+
+
 ?>
