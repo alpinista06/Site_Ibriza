@@ -52,6 +52,7 @@ sudo apt-get install tightvncserver
 # Configurando o servidos com Apache
 
 * Instalando: ``sudo apt-get install apache2``
+* reiniciando: ``sudo /etc/init.d/ssh restart``
 * Comando util: ``sudo /etc/init.d/apache2 restart``
 * O apache coloca o arquivo em /var/www/html/index.html na sua rede local. acesse o IP com qlqr dispositivo conectado na rede e vc vera o index.html padrao do apache.
 
