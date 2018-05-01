@@ -13,6 +13,10 @@ Essa sessão está dividida em varias partes neste repositório:
 * [Bootstrap](https://startbootstrap.com/template-categories/all/)
 * [FreeCodeCamp](https://www.freecodecamp.org/)
 
+Tutorial da página de login:
+https://www.youtube.com/watch?v=iKlWaUszxB4
+
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
